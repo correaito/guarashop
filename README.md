@@ -1,41 +1,76 @@
-# GuaraShop
+# 🛍️ GuaraShop
 
-Um e-commerce moderno para compras online.
+## 📝 Sobre o Projeto
 
-## Sobre o Projeto
+GuaraShop é um e-commerce moderno desenvolvido para proporcionar uma experiência de compra online intuitiva e agradável. O projeto foi construído com as melhores práticas de desenvolvimento e tecnologias atuais do mercado.
 
-GuaraShop é uma plataforma de e-commerce completa que oferece uma experiência de compra intuitiva e segura para os usuários.
+## 🚀 Tecnologias
 
-## Funcionalidades
+Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-- Catálogo de produtos com categorias
-- Carrinho de compras
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Prisma
+- PostgreSQL
+- Stripe (Pagamentos)
+- NextAuth.js (Autenticação)
+
+## ✨ Funcionalidades
+
+- 🔐 Autenticação de usuários
+- 🛒 Carrinho de compras
+- 💳 Integração com gateway de pagamento
+- 📱 Design responsivo
+- 🔍 Busca de produtos
+- 🏷️ Filtros por categoria
+- ⭐ Sistema de avaliação
+- 📦 Acompanhamento de pedidos
+
+## 🎯 Objetivos
+
+O GuaraShop tem como objetivo oferecer:
+
+- Interface moderna e intuitiva
+- Experiência de compra simplificada
 - Sistema de pagamento seguro
-- Área do usuário
-- Histórico de pedidos
-- Sistema de avaliações
+- Gestão eficiente de produtos
+- Análise de dados de vendas
 
-## Tecnologias Utilizadas
-
-- Frontend: React.js
-- Backend: Node.js
-- Banco de Dados: MongoDB
-- Autenticação: JWT
-
-## Como Iniciar
+## 🔧 Instalação
 
 ```bash
-# Instalar dependências
+# Clone o repositório
+git clone https://github.com/correaito/guarashop.git
+
+# Entre no diretório
+cd guarashop
+
+# Instale as dependências
 npm install
 
-# Iniciar o servidor de desenvolvimento
+# Configure as variáveis de ambiente
+cp .env.example .env.local
+
+# Execute o projeto
 npm run dev
 ```
 
-## Contribuição
+## 🤝 Contribuição
 
-Contribuições são bem-vindas! Por favor, leia as diretrizes de contribuição antes de enviar um pull request.
+Contribuições são sempre bem-vindas! Para contribuir:
 
-## Licença
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-Este projeto está licenciado sob a Licença MIT.
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+Feito com ❤️ por Alan Corrêa
