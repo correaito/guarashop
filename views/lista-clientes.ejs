@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .client-list-section {
+            min-height: calc(100vh - 200px);
+            padding-top: 120px;
+            padding-bottom: 50px;
+        }
+        
+        .client-list-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .client-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .client-table th {
+            background-color: #1a5d1a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .client-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .client-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .client-table tr:hover td {
+            background-color: #f9f9f9;
+        }
+        
+        .client-table .date-column {
+            white-space: nowrap;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 50px 0;
+            color: #777;
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+        
+        .actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .alert-error {
+            background-color: #fff5f5;
+            color: #e53e3e;
+            border: 1px solid #fed7d7;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Guara<span>Shop</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#produtos">Produtos</a></li>
+                    <li><a href="/#beneficios">Benefícios</a></li>
+                    <li><a href="/clientes/cadastro">Cadastro</a></li>
+                    <li><a href="/clientes/lista" class="active">Clientes</a></li>
+                    <li><a href="/#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="client-list-section">
+        <div class="container">
+            <div class="client-list-container">
+                <h2>Lista de Clientes</h2>
+                
+                <% if (locals.errorMessage) { %>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i> <%= errorMessage %>
+                    </div>
+                <% } %>
+                
+                <% if (clientes && clientes.length > 0) { %>
+                    <table class="client-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Endereço</th>
+                                <th class="date-column">Data de Cadastro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% clientes.forEach(cliente => { %>
+                                <tr>
+                                    <td><%= cliente.nome %></td>
+                                    <td><%= cliente.email || '-' %></td>
+                                    <td><%= cliente.telefone || '-' %></td>
+                                    <td><%= cliente.endereco || '-' %></td>
+                                    <td class="date-column">
+                                        <% if (cliente.data_cadastro) { %>
+                                            <%= new Date(cliente.data_cadastro).toLocaleDateString('pt-BR') %>
+                                        <% } else { %>
+                                            -
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <div class="empty-state">
+                        <i class="fas fa-users"></i>
+                        <p>Nenhum cliente cadastrado ainda.</p>
+                    </div>
+                <% } %>
+                
+                <div class="actions">
+                    <a href="/" class="btn">Voltar para a página inicial</a>
+                    <a href="/clientes/cadastro" class="btn">Cadastrar Novo Cliente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Guara<span>Shop</span></h2>
+                    <p>Energia natural da Amazônia para você</p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GuaraShop. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
