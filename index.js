@@ -1,7 +1,14 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Rotas
+const clienteRoutes = require('./routes/clienteRoutes');
+
+// Carregar variáveis de ambiente
+require('dotenv').config();
 
 // Configuração do EJS como template engine
 app.set('view engine', 'ejs');
@@ -10,7 +17,14 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware para servir arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rotas
+// Middleware para parsear o corpo das requisições
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Registrar rotas
+app.use('/clientes', clienteRoutes);
+
+// Rota principal
 app.get('/', (req, res) => {
   res.render('index', { 
     title: 'GuaraShop - Sucos Energéticos',
