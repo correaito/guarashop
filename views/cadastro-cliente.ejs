@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .registration-section {
+            min-height: calc(100vh - 200px);
+            padding-top: 120px;
+            padding-bottom: 50px;
+        }
+        
+        .registration-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        .alert-error {
+            background-color: #fff5f5;
+            color: #e53e3e;
+            border: 1px solid #fed7d7;
+        }
+        
+        .alert-success {
+            background-color: #f0fff4;
+            color: #38a169;
+            border: 1px solid #c6f6d5;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .form-actions a {
+            color: #1a5d1a;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .form-actions a:hover {
+            color: #0f3d0f;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Guara<span>Shop</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#produtos">Produtos</a></li>
+                    <li><a href="/#beneficios">Benefícios</a></li>
+                    <li><a href="/clientes/cadastro" class="active">Cadastro</a></li>
+                    <li><a href="/#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-container">
+                <h2>Cadastro de Cliente</h2>
+                <p>Faça seu cadastro para receber ofertas exclusivas e novidades.</p>
+                
+                <% if (errorMessage) { %>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i> <%= errorMessage %>
+                    </div>
+                <% } %>
+                
+                <% if (successMessage) { %>
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> <%= successMessage %>
+                    </div>
+                <% } %>
+                
+                <form action="/clientes/cadastro" method="POST">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" value="<%= cliente.nome %>" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<%= cliente.email %>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" value="<%= cliente.telefone %>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" id="endereco" name="endereco" value="<%= cliente.endereco %>">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="/">Voltar para a página inicial</a>
+                        <button type="submit" class="btn">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Guara<span>Shop</span></h2>
+                    <p>Energia natural da Amazônia para você</p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GuaraShop. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
